@@ -4,7 +4,8 @@ services:
   backend:
     build: 
       context: backend
-
+      dockerfile: Dockerfile
+      target: prod
 
   proxy:
   build: proxy
