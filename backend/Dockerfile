@@ -1,1 +1,3 @@
-FROM hello_world
+FROM rust:latest
+
+
