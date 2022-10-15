@@ -2,14 +2,11 @@ version: '3.8'
 
 services:
   backend:
-    build:
-      context: backend
-      dockerfile: Dockerfile
-      target: development
+    build: backend
 
   proxy:
-  build: proxy
-  ports:
-    - 8080:80
-  depends_on:
-    - backend
+    build: proxy
+    ports:
+      - 8080:80
+    depends_on:
+      - backend
