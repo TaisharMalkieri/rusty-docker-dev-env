@@ -2,9 +2,12 @@ version: '3.8'
 
 services:
   backend:
-    build: backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+      target: development
 
- db:
+  db:
     image: redis
     restart: always
     healthcheck:

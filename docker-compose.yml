@@ -2,10 +2,9 @@ version: '3.8'
 
 services:
   backend:
-    build:
+    build: 
       context: backend
-      dockerfile: Dockerfile
-      target: development
+
 
   proxy:
   build: proxy
