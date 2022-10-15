@@ -4,6 +4,19 @@ services:
   backend:
     build: backend
 
+ db:
+    image: redis
+    restart: always
+    healthcheck:
+      test: [ "CMD", "redis-server", "ping", "-h", "127.0.0.1", "--silent" ]
+      interval: 3s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - db-data:/var/lib/redis
+    expose:
+      - 6379
+
   proxy:
     build: proxy
     ports:
