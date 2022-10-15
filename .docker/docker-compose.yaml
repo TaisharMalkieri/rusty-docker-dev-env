@@ -8,8 +8,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-      target: development
-
+      target: Dev
   db:
     image: redis
     restart: always
@@ -24,8 +23,10 @@ services:
       - 6379
 
   proxy:
-    build: proxy
+    build:
+      context: proxy
+      dockerfile: Dockerfile
     ports:
-      - 8080:80
+      - "8080:80"
     depends_on:
       - backend
