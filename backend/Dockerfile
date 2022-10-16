@@ -7,9 +7,8 @@ FROM rust:bullseye as Dev
 RUN apt-get update \
     && apt-get install -y git \
     && apt-get install -y curl \
-    && apt-get clean
-RUN sudo apt-get install -y zsh \
-    && chsh -s $(which zsh) \
+    && apt-get install -y zsh \
+    && apt-get update \
     && apt-get clean
 
 COPY ./build/*.sh /tmp/backend-build/
