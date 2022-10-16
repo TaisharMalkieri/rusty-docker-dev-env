@@ -9,6 +9,8 @@ services:
       context: backend
       dockerfile: Dockerfile
       target: Dev
+    env_file:
+      - fileName
   db:
     image: redis
     restart: always
