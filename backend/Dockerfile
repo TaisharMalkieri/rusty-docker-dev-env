@@ -7,7 +7,7 @@ FROM rust:bullseye as Dev
 RUN apt-get update \
     && apt-get install -y git \
     && apt-get install -y curl \
-    && apt-get install -y clean
+    && apt-get clean
 
 RUN mkdir tmp
 COPY ./build/*.sh /tmp/
