@@ -7,10 +7,28 @@ services:
       dockerfile: Dockerfile
       target: prod
     env_file:
-      - cargo.env
+      - ./.cargo/cargo.env
+    depends_on:
+      - db
+
+    db:
+    image: redis
+    restart: always
+    healthcheck:
+      test: [ "CMD", "redis-server", "ping", "-h", "127.0.0.1", "--silent" ]
+      interval: 3s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - db-data:/var/lib/redis
+    expose:
+      - 6379
 
   proxy:
-  build: proxy
+  build:
+    context: proxy
+    dockerfile: Dockerfile
+  restart: always
   ports:
     - 8080:80
   depends_on:
