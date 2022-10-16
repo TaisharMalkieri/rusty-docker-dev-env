@@ -5,6 +5,7 @@ volumes:
 
 services:
   backend:
+    container_name: workspace
     build:
       context: backend
       dockerfile: Dockerfile
@@ -14,6 +15,7 @@ services:
       - /backend/cargo/cargo.env
 
   db:
+    container_name: db
     image: redis
     restart: always
     healthcheck:
@@ -27,6 +29,7 @@ services:
       - 6379
 
   proxy:
+    container_name: proxy
     build:
       context: proxy
       dockerfile: Dockerfile
