@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
       target: Dev
     env_file:
-      - /backend/devenv/backend.env
+      - /.docker/devenv/backend.env
 
   db:
     image: redis
