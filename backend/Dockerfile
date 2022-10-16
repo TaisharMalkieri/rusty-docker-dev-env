@@ -9,9 +9,9 @@ RUN apt-get update \
     && apt-get install -y curl \
     && apt-get clean
 
-RUN mkdir tmp
-COPY ./build/*.sh /tmp/
 
-RUN ./tmp/cargo.sh
+COPY ./build/*.sh /tmp/backend-build/
+
+RUN ./tmp/backend-build/cargo.sh
 
 FROM rust:latest as prod
