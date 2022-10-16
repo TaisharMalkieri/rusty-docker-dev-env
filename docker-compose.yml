@@ -6,6 +6,8 @@ services:
       context: backend
       dockerfile: Dockerfile
       target: prod
+    env_file:
+      - cargo.env
 
   proxy:
   build: proxy
