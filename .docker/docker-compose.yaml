@@ -11,7 +11,7 @@ services:
       dockerfile: Dockerfile
       target: Dev
     env_file:
-      - /devenv/backend.env
+      - ./devenv/backend.env
     #  - /backend/.cargo/cargo.env
 
   db:
