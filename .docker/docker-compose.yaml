@@ -12,7 +12,7 @@ services:
       target: Dev
     env_file:
     #  - /backend/devenv/backend.env
-      - /backend/cargo/cargo.env
+      - /backend/.cargo/cargo.env
 
   db:
     container_name: db
