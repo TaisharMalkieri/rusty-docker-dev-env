@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
       target: Dev
     env_file:
-      - ./.devenv/.cargo.env
+      - ./backend/.cargo/cargo_dev.env
 
   db:
     image: redis
