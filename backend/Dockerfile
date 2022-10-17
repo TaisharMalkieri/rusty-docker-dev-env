@@ -13,8 +13,7 @@ RUN apt-get update \
 
 COPY ./build/*.sh /tmp/backend-build/
 
-RUN ./tmp/backend-build/cargo.sh
-RUN ./tmp/backend-build/zsh.sh
-
+RUN /tmp/backend-build/cargo.sh
+RUN /tmp/backend-build/zsh.sh
 
 FROM rust:latest as prod
