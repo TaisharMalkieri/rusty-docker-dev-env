@@ -30,7 +30,7 @@ services:
     volumes:
       - db-data:/var/lib/redis
     ports: 
-      - 6379:6379
+      - "6379:6379"
     networks:
       - server-side
 
@@ -40,7 +40,7 @@ services:
       context: proxy
       dockerfile: Dockerfile
     ports:
-      - 8080:80
+      - "8080:80"
     depends_on:
       - backend
     networks:
