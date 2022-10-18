@@ -15,7 +15,8 @@ services:
       context: backend
       dockerfile: Dockerfile
       target: Dev
-    networks: server-side
+    networks:
+      - server-side
 
   db:
     container_name: db
@@ -29,7 +30,8 @@ services:
     volumes:
       - db-data:/var/lib/redis
     ports: "6379:6379"
-    networks: server-side
+    networks:
+      - server-side
 
   proxy:
     container_name: proxy
@@ -40,5 +42,6 @@ services:
       - "8080:80"
     depends_on:
       - backend
-    networks: server-side
+    networks:
+      - server-side
     
