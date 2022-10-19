@@ -18,4 +18,4 @@ cargo binstall  --no-confirm        \
 
 # Cook the dependencies
 cargo chef prepare --recipe-path /backend/recipe.json
-cargo chef cook 
+cargo chef cook --recipe-path /backend/recipe.json
