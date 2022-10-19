@@ -15,6 +15,9 @@ services:
       context: backend
       dockerfile: Dockerfile
       target: Dev
+    environment:
+      - CARGO_NET_GIT_FETCH_WITH_CLI=true
+
     networks:
       - server-side
 

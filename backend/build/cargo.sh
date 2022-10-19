@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
-cargo install cargo-binstallca
-cargo binstall cargo-binstall
+cargo install cargo-binstall
+cargo install --locked cargo-chef 
+cargo binstall cargo-binstall --no-confirm
 
 cargo binstall  --no-confirm        \
                 cargo-expand        \
                 cargo-outdated      \
                 cargo-watch         \
                 cargo-geiger        \
-                cargo-chef          \
                 cargo-about         \
-                cargo-valgrind      \
                 cargo-spellcheck    \
                 cargo-inspect       \
                 cargo-audit         \
-                cargo-tarpaulin     \
+#                cargo-tarpaulin     \
+#                cargo-valgrind      \
+
+# Cook the dependencies
+cargo chef prepare --recipe-path /backend/recipe.json
+cargo chef cook 
