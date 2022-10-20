@@ -15,9 +15,15 @@ services:
       context: backend
       dockerfile: Dockerfile
       target: Dev
+      args:
+        - USERNAME=dev
+        - UID=1000
+        - GID=1000
+        - ZSH=.docker/zsh/
+        - ZSH_THEME="jonathan"
     environment:
       - CARGO_NET_GIT_FETCH_WITH_CLI=true
-
+      - $ZDOTDIR=/.docker/zsh
     networks:
       - server-side
 

@@ -3,6 +3,11 @@ FROM rust:bullseye as Dev
 #   CARGO_HOME=/usr/local/cargo \
 #   PATH=/usr/local/cargo/bin:$PATH \
 #   RUST_VERSION=1.64.0
+ARG USERNAME
+ARG UID
+ARG GID
+ARG ZSH
+ARG ZSH_THEME
 
 RUN apt-get update \
     && apt-get install -y git \
@@ -14,6 +19,6 @@ RUN apt-get update \
 COPY ./build/*.sh /tmp/backend-build/
 
 RUN /tmp/backend-build/cargo.sh
-RUN /tmp/backend-build/zsh.sh
+RUN /tmp/backend-build/zsh.sh USERNAME UID GID ZSH ZSH_THEME
 
 FROM rust:latest as prod
