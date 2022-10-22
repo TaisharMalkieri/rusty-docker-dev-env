@@ -16,6 +16,8 @@ services:
       dockerfile: Dockerfile
       target: Dev
       args:
+        - GIT_USER=tormod
+        - GIT_EMAIL=tormod_tho@hotmail.com
         - USERNAME=dev
         - UID=1000
         - GID=1000
@@ -23,9 +25,10 @@ services:
         - ZSH_THEME="jonathan"
     environment:
       - CARGO_NET_GIT_FETCH_WITH_CLI=true
-      - $ZDOTDIR=/.docker/zsh
+      - STARSHIP_CONFIG=.config/starship.toml
     networks:
       - server-side
+
 
   db:
     container_name: db

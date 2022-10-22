@@ -1,3 +1,0 @@
-thousand, 1000, 1000
-fatal: could not create leading directories of '/home/thousand/.oh-my-zsh': Permission denied
-Done!

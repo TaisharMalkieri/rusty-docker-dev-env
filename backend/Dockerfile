@@ -9,16 +9,13 @@ ARG GID
 ARG ZSH
 ARG ZSH_THEME
 
-RUN apt-get update \
-    && apt-get install -y git \
-    && apt-get install -y curl \
-    && apt-get install -y zsh \
-    && apt-get update \
-    && apt-get clean
+ARG GIT_USER
+ARG GIT_EMAIL
 
 COPY ./build/*.sh /tmp/backend-build/
 
+RUN /tmp/backend-build/utilities.sh GIT_USER GIT_EMAIL
+RUN /tmp/backend-build/shell.sh USERNAME UID GID ZSH ZSH_THEME
 RUN /tmp/backend-build/cargo.sh
-RUN /tmp/backend-build/zsh.sh USERNAME UID GID ZSH ZSH_THEME
 
 FROM rust:latest as prod
