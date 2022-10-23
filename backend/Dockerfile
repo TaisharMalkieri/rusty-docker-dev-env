@@ -15,7 +15,8 @@ ARG GIT_EMAIL
 COPY ./build/*.sh /tmp/backend-build/
 
 RUN /tmp/backend-build/utilities.sh GIT_USER GIT_EMAIL
-RUN /tmp/backend-build/shell.sh USERNAME UID GID ZSH ZSH_THEME
+RUN /tmp/backend-build/user.sh USERNAME UID GID ZSH ZSH_THEME
 RUN /tmp/backend-build/cargo.sh
-
+RUN /tmp/backend-build/shell.sh
+cargo install starship --locked
 FROM rust:latest as prod

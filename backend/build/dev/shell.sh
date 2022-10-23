@@ -1,7 +1,7 @@
 # Depends on user.sh
 # Install zsh
 
-export ZDOTDIR=$HOME/.dotdir/zsh
+export ZDOTDIR="~/dev/rusty/rusty-docker-dev-env/.config/zsh"
 
 if ! type zsh > /dev/null 2>&1; then
     apt_get_update_if_needed
@@ -23,6 +23,9 @@ echo "https://github.com/ryanoasis/nerd-fonts.git"
 git fetch --depth 1 --branch v1.7.7 https://github.com/vorillaz/devicons.git
 fc-cache -v
 echo "Installed devicons!"
+
+export STARSHIP_CONFIG="~/dev/rusty/rusty-docker-dev-env/.config/starship/starship.toml"
+export STARSHIP_CACHE=~"~/dev/rusty/rusty-docker-dev-env/.config/starship/error-cache"
 
 curl -sS https://starship.rs/install.sh | sh
 
