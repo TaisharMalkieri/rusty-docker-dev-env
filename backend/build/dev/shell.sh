@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Depends on user.sh
 # Depends on rust.sh
 # Install zsh

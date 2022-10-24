@@ -1,4 +1,4 @@
-
+#!/usr/bin/env bash
 
 RUST_VERSION=1.63.0
 RUSTUP_INIT_VERSION=1.24.3
