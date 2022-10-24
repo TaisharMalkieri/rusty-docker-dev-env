@@ -12,6 +12,7 @@ ARG ZSH_THEME
 ARG GIT_USER
 ARG GIT_EMAIL
 
+COPY ./build/dev/shell.sh /tmp/backend-build/
 ADD ./build/dev/*.sh /tmp/backend-build/
 
 RUN /tmp/backend-build/utilities.sh GIT_USER GIT_EMAIL
