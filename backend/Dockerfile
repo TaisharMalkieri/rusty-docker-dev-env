@@ -14,9 +14,9 @@ ARG GIT_EMAIL
 
 COPY ./build/dev/*.sh /tmp/backend-build/
 
-RUN /tmp/backend-build/utilities.sh GIT_USER GIT_EMAIL
-RUN /tmp/backend-build/user.sh USERNAME UID GID ZSH ZSH_THEME
-RUN /tmp/backend-build/rust.sh
-RUN /tmp/backend-build/cargo.sh
-RUN /tmp/backend-build/shell.sh
+RUN sudo /tmp/backend-build/utilities.sh GIT_USER GIT_EMAIL
+RUN sudo /tmp/backend-build/user.sh USERNAME UID GID ZSH ZSH_THEME
+RUN sudo /tmp/backend-build/rust.sh
+RUN sudo /tmp/backend-build/cargo.sh
+RUN sudo /tmp/backend-build/shell.sh
 FROM rust:latest as prod
