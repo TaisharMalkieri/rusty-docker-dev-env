@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 
 # Install curl, wget, git
-GIT_USER=${1}
-GIT_EMAIL=${2}
-
 apt-get update                  \
 && apt-get install -y git       \
 && apt-get install -y curl      \

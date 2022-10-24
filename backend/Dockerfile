@@ -14,7 +14,7 @@ ARG GIT_EMAIL
 
 COPY ./build/dev/*.sh /tmp/backend-build/
 
-RUN sudo bash /tmp/backend-build/utilities.sh GIT_USER GIT_EMAIL
+RUN sudo bash /tmp/backend-build/utilities.sh
 RUN sudo bash /tmp/backend-build/user.sh USERNAME UID GID ZSH ZSH_THEME
 RUN sudo bash /tmp/backend-build/rust.sh
 RUN sudo bash /tmp/backend-build/cargo.sh
