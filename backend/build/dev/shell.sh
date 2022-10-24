@@ -1,4 +1,5 @@
 # Depends on user.sh
+# Depends on rust.sh
 # Install zsh
 
 export ZDOTDIR="~/dev/rusty/rusty-docker-dev-env/.config/zsh"
@@ -27,5 +28,6 @@ echo "Installed devicons!"
 export STARSHIP_CONFIG="~/dev/rusty/rusty-docker-dev-env/.config/starship/starship.toml"
 export STARSHIP_CACHE=~"~/dev/rusty/rusty-docker-dev-env/.config/starship/error-cache"
 
-curl -sS https://starship.rs/install.sh | sh
+curl https://starship.rs/install.sh | sh
+
 

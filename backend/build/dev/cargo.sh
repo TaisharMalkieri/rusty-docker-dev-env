@@ -13,6 +13,7 @@ cargo binstall  --no-confirm        \
                 cargo-spellcheck    \
                 cargo-inspect       \
                 cargo-audit         \
+                cargo-clippy        \
 #                cargo-tarpaulin     \
 #                cargo-valgrind      \
 
