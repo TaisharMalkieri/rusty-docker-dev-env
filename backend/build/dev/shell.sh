@@ -30,6 +30,6 @@ echo "Installed devicons!"
 export STARSHIP_CONFIG="~/dev/rusty/rusty-docker-dev-env/.config/starship/starship.toml"
 export STARSHIP_CACHE=~"~/dev/rusty/rusty-docker-dev-env/.config/starship/error-cache"
 
-curl https://starship.rs/install.sh | sh
+curl https://starship.rs/install.sh | sh --force --verbose
 
 
