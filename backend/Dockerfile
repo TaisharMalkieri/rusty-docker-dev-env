@@ -20,4 +20,5 @@ RUN /tmp/backend-build/user.sh USERNAME UID GID ZSH ZSH_THEME
 RUN /tmp/backend-build/rust.sh
 RUN /tmp/backend-build/shell.sh
 RUN /tmp/backend-build/cargo.sh
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 FROM rust:latest as prod

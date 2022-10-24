@@ -31,7 +31,6 @@ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
 apt-get update \
 && apt-get -y install --no-install-recommends gcc libc6-dev musl-tools \
 && apt-get clean \
-&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ln -s /usr/bin/gcc /usr/bin/"$(uname -m)"-linux-musl-gcc
 
 wget -qO- "https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-$(uname -m)-unknown-linux-gnu.gz" | \
