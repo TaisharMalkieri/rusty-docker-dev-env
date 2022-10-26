@@ -16,7 +16,3 @@ cargo binstall  --no-confirm        \
                 cargo-clippy        \
 #                cargo-tarpaulin     \
 #                cargo-valgrind      \
-
-# Cook the dependencies
-cargo chef prepare --recipe-path /backend/recipe.json
-cargo chef cook --recipe-path /backend/recipe.json
