@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-RUST_VERSION=stable-x86_64-unknown-linux-gnu
+RUST_VERSION={1}
 RUSTUP_INIT_VERSION=1.24.3
-RUSTUP_HOME=/usr/local/rustup \
-CARGO_HOME=/usr/local/cargo \
+RUSTUP_HOME={2}
+CARGO_HOME={3}
 PATH=/usr/local/cargo/bin:$PATH
-RUST_ANALYZER_VERSION=2022-08-22
+RUST_ANALYZER_VERSION={4}
+#RUST_ANALYZER_VERSION=2022-08-22
 
 
 # Fetch machine hardware
@@ -20,7 +21,7 @@ esac
 echo "Installing rust-"${RUST_VERSION}", rustup-"${RUSTUP_INIT_VERSION}", rust-analyzer "${RUST_ANALYZER_VERSION}" for "$arch""
 export RUSTUP_HOME=/usr/local/rustup \
 export CARGO_HOME=/usr/local/cargo \
-export PATH=/usr/local/cargo/bin:$PATH
+
 
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
     --no-modify-path                        \
@@ -35,7 +36,7 @@ apt-get clean
 ln -s /usr/bin/gcc /usr/bin/"$(uname -m)"-linux-musl-gcc
 chmod -R a+w ${RUSTUP_HOME} ${CARGO_HOME}
 
-rustup default stable
+
 
 wget -qO- "https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-$(uname -m)-unknown-linux-gnu.gz" | \
 gunzip > /usr/local/bin/rust-analyzer && \
