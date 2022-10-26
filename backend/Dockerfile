@@ -1,8 +1,10 @@
 FROM debian:bullseye as Dev
-#   RUSTUP_HOME=/usr/local/rustup \
-#   CARGO_HOME=/usr/local/cargo \
-#   PATH=/usr/local/cargo/bin:$PATH \
-#   RUST_VERSION=1.64.0
+
+ARG RUSTUP_HOME=/usr/local/rustup 
+ARG CARGO_HOME=/usr/local/cargo
+ARG PATH=/usr/local/cargo/bin:$PATH
+
+ARG RUST_VERSION=stable
 ARG USERNAME
 ARG UID
 ARG GID
@@ -12,6 +14,10 @@ ARG ZSH_THEME
 ARG GIT_USER
 ARG GIT_EMAIL
 
+ENV RUSTUP_HOME=$RUSTUP_HOME 
+ENV CARGO_HOME=$CARGO_HOME
+
+
 COPY ./build/dev/shell/starship.toml ~/.config/ 
 COPY ./build/dev/shell.sh /tmp/backend-build/
 ADD ./build/dev/*.sh /tmp/backend-build/
@@ -20,7 +26,7 @@ RUN /tmp/backend-build/user.sh $USERNAME $UID $GID
 RUN /tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 
 ENV PATH=/usr/local/cargo/bin:$PATH
-RUN /tmp/backend-build/rust.sh
+RUN /tmp/backend-build/rust.sh $RUST_VERSION $RUSTUP_HOME $CARGO_HOME $RUST_ANALYZER_VERSION
 RUN /tmp/backend-build/shell.sh
 
 
