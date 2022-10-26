@@ -4,7 +4,7 @@ ARG RUSTUP_HOME=/usr/local/rustup
 ARG CARGO_HOME=/usr/local/cargo
 ARG PATH=/usr/local/cargo/bin:$PATH
 
-ARG RUST_VERSION=stable
+ARG RUST_VERSION="stable"
 ARG USERNAME
 ARG UID
 ARG GID

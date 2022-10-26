@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+rustup default stable
 
 cargo install cargo-binstall
 cargo install --locked cargo-chef 
