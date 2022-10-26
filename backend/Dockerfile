@@ -27,6 +27,6 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENTRYPOINT [ "/usr/bin/zsh" ]
 COPY ./build/dev/shell/.zshrc ./build/dev/shell/.bashrc /root/
 
-USER USERNAME
+USER $USERNAME
 RUN /tmp/backend-build/cargo.sh
 FROM rust:latest as prod
