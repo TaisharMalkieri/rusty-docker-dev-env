@@ -29,6 +29,8 @@ services:
       - STARSHIP_CONFIG=.config/starship.toml
     networks:
       - server-side
+    volumes:
+      - cache:~/.cargo/registry
 
 
   db:

@@ -34,9 +34,6 @@ apt-get update
 apt-get -y install --no-install-recommends gcc libc6-dev musl-tools
 apt-get clean
 ln -s /usr/bin/gcc /usr/bin/"$(uname -m)"-linux-musl-gcc
-chmod -R a+w ${RUSTUP_HOME} ${CARGO_HOME}
-
-
 
 wget -qO- "https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-$(uname -m)-unknown-linux-gnu.gz" | \
 gunzip > /usr/local/bin/rust-analyzer && \
