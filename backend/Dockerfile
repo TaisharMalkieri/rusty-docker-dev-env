@@ -22,11 +22,13 @@ RUN /tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 RUN /tmp/backend-build/rust.sh
 RUN /tmp/backend-build/shell.sh
 
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENTRYPOINT [ "/usr/bin/zsh" ]
 COPY ./build/dev/shell/.zshrc ./build/dev/shell/.bashrc /root/
 
 USER $USERNAME
 RUN /tmp/backend-build/cargo.sh
-FROM rust:latest as prod
+
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ENTRYPOINT [ "/usr/bin/zsh" ]
+
+# FROM rust:latest as prod
