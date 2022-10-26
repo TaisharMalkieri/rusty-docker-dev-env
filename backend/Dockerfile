@@ -19,6 +19,7 @@ ADD ./build/dev/*.sh /tmp/backend-build/
 RUN /tmp/backend-build/user.sh $USERNAME $UID $GID
 RUN /tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 
+ENV PATH=/usr/local/cargo/bin:$PATH
 RUN /tmp/backend-build/rust.sh
 RUN /tmp/backend-build/shell.sh
 
