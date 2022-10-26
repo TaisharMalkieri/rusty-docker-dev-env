@@ -22,16 +22,16 @@ export RUSTUP_HOME=/usr/local/rustup \
 export CARGO_HOME=/usr/local/cargo \
 export PATH=/usr/local/cargo/bin:$PATH
 
-curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y  -V\
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
     --no-modify-path                        \
     --profile minimal                       \
     --default-toolchain ${RUST_VERSION}     \
     --default-host ${rustArch}              \
     --component add clippy rustfmt rust-src
     
-apt-get update \
-&& apt-get -y install --no-install-recommends gcc libc6-dev musl-tools \
-&& apt-get clean \
+apt-get update
+apt-get -y install --no-install-recommends gcc libc6-dev musl-tools
+apt-get clean
 ln -s /usr/bin/gcc /usr/bin/"$(uname -m)"-linux-musl-gcc
 chmod -R a+w ${RUSTUP_HOME} ${CARGO_HOME}
 
