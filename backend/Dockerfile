@@ -33,7 +33,7 @@ RUN /tmp/backend-build/shell.sh
 COPY ./build/dev/shell/.zshrc ./build/dev/shell/.bashrc /root/
 
 USER $USERNAME
-RUN /tmp/backend-build/cargo.sh
+# RUN /tmp/backend-build/cargo.sh
 
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENTRYPOINT [ "/usr/bin/zsh" ]
