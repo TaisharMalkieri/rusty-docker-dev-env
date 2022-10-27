@@ -1,11 +1,11 @@
 FROM debian:bullseye as Dev
 
-ARG RUSTUP_HOME=/usr/local/rustup 
-ARG CARGO_HOME=/usr/local/cargo
-ARG PATH=/usr/local/cargo/bin:$PATH
+ARG RUSTUP_HOME="/usr/local/rustup" 
+ARG CARGO_HOME="/usr/local/cargo"
+ARG PATH="/usr/local/cargo/bin:$PATH"
 
 ARG RUST_VERSION="stable"
-ARG RUST_ANALYZER_VERSION=2022-10-24
+ARG RUST_ANALYZER_VERSION="2022-10-24"
 ARG USERNAME
 ARG UID
 ARG GID
@@ -21,7 +21,8 @@ ENV CARGO_HOME=$CARGO_HOME
 
 COPY ./build/dev/shell/starship.toml ~/.config/ 
 COPY ./build/dev/shell.sh /tmp/backend-build/
-ADD ./build/dev/*.sh /tmp/backend-build/
+# trunk-ignore(git-diff-check/error)
+COPY ./build/dev/*.sh /tmp/backend-build/
 
 RUN /tmp/backend-build/user.sh $USERNAME $UID $GID
 RUN /tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL

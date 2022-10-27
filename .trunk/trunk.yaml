@@ -1,0 +1,27 @@
+version: 0.1
+cli:
+  version: 1.0.1
+plugins:
+  sources:
+    - id: trunk
+      ref: v0.0.5
+      uri: https://github.com/trunk-io/plugins
+lint:
+  enabled:
+    - git-diff-check
+    - hadolint@2.10.0
+    - markdownlint@0.32.2
+    - shellcheck@0.8.0
+    - taplo@release-taplo-cli-0.7.0
+    - shfmt@3.5.0
+    - clippy@1.58.1
+    - gitleaks@8.15.0
+    - rustfmt@1.58.1
+    - prettier@2.7.1
+runtimes:
+  enabled:
+    - go@1.18.3
+    - node@16.14.2
+actions:
+  enabled:
+    - trunk-upgrade-available

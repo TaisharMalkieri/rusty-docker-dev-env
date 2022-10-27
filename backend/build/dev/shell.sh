@@ -13,7 +13,7 @@ if ! type zsh > /dev/null 2>&1; then
     apt-get autoremove -y                       &&\
     apt-get clean -y                            &&\
     rm -r /var/cache/* /var/lib/apt/lists/*     &&\
-    chsh -s $(which zsh)
+    chsh -s "$(which zsh)"
 fi
 
 apt-get update -y && \
