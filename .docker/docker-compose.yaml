@@ -27,7 +27,7 @@ services:
     networks:
       - server-side
     volumes:
-      - cache:~/.cargo/registry
+      - cache:$HOME/.cargo/registry
 
 
   db:
