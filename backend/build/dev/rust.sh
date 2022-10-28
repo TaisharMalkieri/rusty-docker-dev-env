@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-RUST_VERSION=${1}
-RUSTUP_HOME=${2}
+RUST_VERSION=${rust_version:-""}
+RUSTUP_HOME=${2:}
 CARGO_HOME=${3}
 RUST_ANALYZER_VERSION=${4}
 PATH=/usr/local/cargo/bin:$PATH
@@ -30,7 +30,7 @@ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
     --default-toolchain "${RUST_VERSION}"     \
     --default-host "${rustArch}"             \
     --component add clippy rustfmt rust-src
-    
+
 apt-get update
 apt-get -y install --no-install-recommends gcc libc6-dev musl-tools
 apt-get clean

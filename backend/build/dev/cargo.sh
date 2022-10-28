@@ -2,7 +2,7 @@
 rustup default stable
 
 cargo install cargo-binstall
-cargo install --locked cargo-chef 
+cargo install --locked cargo-chef
 cargo binstall cargo-binstall --no-confirm
 
 cargo binstall  --no-confirm        \
@@ -15,5 +15,5 @@ cargo binstall  --no-confirm        \
                 cargo-inspect       \
                 cargo-audit         \
                 cargo-clippy        \
-#                cargo-tarpaulin     \
-#                cargo-valgrind      \
+#                cargo-tarpaulin
+#                cargo-valgrind

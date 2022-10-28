@@ -35,11 +35,9 @@ RUN /tmp/backend-build/rust.sh $RUST_VERSION $RUSTUP_HOME $CARGO_HOME $RUST_ANAL
 
 ENV ZDOTDIR="$HOME/dev/rusty-docker-dev-env.config/zsh"
 ENV STARSHIP_CONFIG="$HOME/dev/rusty-docker-dev-env/.config/starship/starship.toml"
-ENV STARSHIP_CACHE=~"/com.docker.devenvironments.code/.config/starship/error-cache/"
+ENV STARSHIP_CACHE=~"$HOME/dev/rusty-docker-dev-env/.config/starship/error-cache/"
 COPY ./build/dev/shell/.zshrc ./build/dev/shell/.bashrc /root/
 COPY ./build/dev/shell/starship.toml /home/$USERNAME/.config/
-
-
 RUN /tmp/backend-build/shell.sh
 USER $USERNAME
 
