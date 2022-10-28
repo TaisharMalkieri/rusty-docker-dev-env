@@ -32,8 +32,6 @@ ENV PATH=/usr/local/cargo/bin:$PATH
 RUN /tmp/backend-build/rust.sh $RUST_VERSION $RUSTUP_HOME $CARGO_HOME $RUST_ANALYZER_VERSION
 
 # Depends on user.sh and utilities.sh
-RUN mkdir /home/$USERNAME/.config/
-
 
 ENV ZDOTDIR="$HOME/dev/rusty-docker-dev-env.config/zsh"
 ENV STARSHIP_CONFIG="$HOME/dev/rusty-docker-dev-env/.config/starship/starship.toml"
