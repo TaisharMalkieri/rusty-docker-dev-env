@@ -19,10 +19,9 @@ ENV RUSTUP_HOME=$RUSTUP_HOME
 ENV CARGO_HOME=$CARGO_HOME
 ENV PATH=/usr/local/cargo/bin:$PATH
 
-COPY ./build/dev/shell.sh /tmp/backend-build/
 COPY ./build/dev/*.sh /tmp/backend-build/
 
-RUN /tmp/backend-build/user.sh $USERNAME $UID $GID &&\
+RUN /tmp/backend-build/user.sh $USERNAME $UID $GID
 RUN tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 
 RUN /tmp/backend-build/rust.sh $RUST_VERSION $RUSTUP_HOME $CARGO_HOME $RUST_ANALYZER_VERSION

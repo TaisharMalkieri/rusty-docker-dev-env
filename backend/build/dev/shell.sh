@@ -4,7 +4,7 @@
 # Depends on rust.sh
 # Install zsh
 
-export ZDOTDIR="~/dev/rusty/rusty-docker-dev-env/.config/zsh"
+export ZDOTDIR="$HOME/dev/rusty/rusty-docker-dev-env/.config/zsh"
 
 if ! type zsh > /dev/null 2>&1; then
     apt_get_update_if_needed                    &&\
