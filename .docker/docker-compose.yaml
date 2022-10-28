@@ -22,11 +22,8 @@ services:
         - USERNAME=dev
         - UID=1000
         - GID=1000
-        - ZSH=.docker/zsh/
-        - ZSH_THEME="jonathan"
     environment:
       - CARGO_NET_GIT_FETCH_WITH_CLI=true
-      - STARSHIP_CONFIG=.config/starship.toml
     networks:
       - server-side
     volumes:
@@ -44,7 +41,7 @@ services:
       start_period: 30s
     volumes:
       - db-data:/var/lib/redis
-    ports: 
+    ports:
       - "6379:6379"
     networks:
       - server-side
@@ -60,4 +57,3 @@ services:
       - backend
     networks:
       - server-side
-    

@@ -4,8 +4,6 @@
 # Depends on rust.sh
 # Install zsh
 
-export ZDOTDIR="$HOME/dev/rusty/rusty-docker-dev-env/.config/zsh"
-
 if ! type zsh > /dev/null 2>&1; then
     apt_get_update_if_needed                    &&\
     apt-get install -y  --no-install-recommends zsh wget zplug nano locales fontconfig &&\
@@ -47,10 +45,6 @@ rm /usr/local/share/fonts/devicons/*Windows*           &&\
 fc-cache -fv                              &&\
 rm -rf /tmp/*                             &&\
 echo "Installed devicons!"
-
-
-export STARSHIP_CONFIG="/com.docker.devenvironments.code/.config/starship/starship.toml"
-export STARSHIP_CACHE=~"/com.docker.devenvironments.code/.config/starship/error-cache/"
 
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
