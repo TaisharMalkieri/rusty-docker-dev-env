@@ -22,6 +22,7 @@ ENV CARGO_HOME=${CARGO_HOME}
 
 
 COPY ./build/dev/shell.sh /tmp/backend-build/
+COPY ./build/dev/shell/zsh.env $HOME/
 COPY ./build/dev/*.sh /tmp/backend-build/
 
 RUN /tmp/backend-build/user.sh $USERNAME $UID $GID
@@ -29,15 +30,16 @@ RUN tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 
 
 ENV PATH=/usr/local/cargo/bin:$PATH
-RUN /tmp/backend-build/rust.sh $RUST_VERSION $RUSTUP_HOME $CARGO_HOME $RUST_ANALYZER_VERSION
+RUN /tmp/backend-build/rust.sh
 
 # Depends on user.sh and utilities.sh
 
-ENV ZDOTDIR="$HOME/dev/rusty-docker-dev-env.config/zsh"
+RUN ZDOTDIR="$HOME/dev/rusty-docker-dev-env.config/zsh"
 ENV STARSHIP_CONFIG="$HOME/dev/rusty-docker-dev-env/.config/starship/starship.toml"
 ENV STARSHIP_CACHE=~"$HOME/dev/rusty-docker-dev-env/.config/starship/error-cache/"
 COPY ./build/dev/shell/.zshrc ./build/dev/shell/.bashrc /root/
-COPY ./build/dev/shell/starship.toml /home/$USERNAME/.config/
+COPY ./build/dev/shell/starship.toml $HOME/.config/
+COPY ./backend/build/dev/shell/.zshenv $HOME/
 RUN /tmp/backend-build/shell.sh
 USER $USERNAME
 
