@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
 
-RUST_VERSION=${rust_version:-""}
-RUSTUP_HOME=${2:}
-CARGO_HOME=${3}
-RUST_ANALYZER_VERSION=${4}
+RUST_VERSION=${rust_version:-"stable"}
+RUSTUP_INIT_VERSION=${rust_analyzer_version:-"1.24.3"}
+RUST_ANALYZER_VERSION=${rust_analyzer_version:-"2022-08-22"}
+
 PATH=/usr/local/cargo/bin:$PATH
-RUSTUP_INIT_VERSION=1.24.3
-
-#RUST_ANALYZER_VERSION=2022-08-22
-
 
 # Fetch machine hardware
 arch="$(uname -m)"
@@ -19,26 +15,23 @@ aarch64) rustArch='aarch64-unknown-linux-gnu'; rustupSha256='32a1532f7cef072a667
 *) echo >&2 "unsupported architecture"; exit 1 ; \
 esac
 
-echo "Installing rust-${RUST_VERSION}, rustup-${RUSTUP_INIT_VERSION}, rust-analyzer ${RUST_ANALYZER_VERSION} for "$arch""
-export RUSTUP_HOME=/usr/local/rustup \
-export CARGO_HOME=/usr/local/cargo \
-
+echo "Installing rust-$RUST_VERSION, rustup-$RUSTUP_INIT_VERSION, rust-analyzer $RUST_ANALYZER_VERSION for "$arch""
 
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
     --no-modify-path                        \
     --profile minimal                       \
-    --default-toolchain "${RUST_VERSION}"     \
-    --default-host "${rustArch}"             \
+    --default-toolchain "$RUST_VERSION"     \
+    --default-host "$rustArch"             \
     --component add clippy rustfmt rust-src
 
 apt-get update
 apt-get -y install --no-install-recommends gcc libc6-dev musl-tools
 apt-get clean
 ln -s /usr/bin/gcc /usr/bin/"$(uname -m)"-linux-musl-gcc
-chmod -R a+w ${RUSTUP_HOME} ${CARGO_HOME}
+chmod -R a+w "${RUSTUP_HOME}" "${CARGO_HOME}"
 
 rustup default stable
 
-wget -qO- "https://github.com/rust-analyzer/rust-analyzer/releases/download/${RUST_ANALYZER_VERSION}/rust-analyzer-$(uname -m)-unknown-linux-gnu.gz" | \
+wget -qO- "https://github.com/rust-analyzer/rust-analyzer/releases/download/$RUST_ANALYZER_VERSION/rust-analyzer-$(uname -m)-unknown-linux-gnu.gz" | \
 gunzip > /usr/local/bin/rust-analyzer && \
 chmod 500 /usr/local/bin/rust-analyzer
