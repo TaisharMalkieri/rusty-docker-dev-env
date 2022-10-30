@@ -37,13 +37,10 @@ RUN /tmp/backend-build/rust.sh RUST_VERSION RUSTUP_INIT_VERSION
 
 # Copies the zshenv file containing the project DOTDIR location, redirecting configuration from $HOME to .config/ZSH.
 COPY ./build/dev/shell/.zshenv $HOME/
-
-
 # Depends on user.sh and utilities.sh
 ENV STARSHIP_CONFIG="$HOME/dev/rusty-docker-dev-env/.config/starship/starship.toml"
 ENV STARSHIP_CACHE=~"$HOME/dev/rusty-docker-dev-env/.config/starship/error-cache/"
-COPY ./build/dev/shell/starship.toml $HOME/.config/
-COPY ./backend/build/dev/shell/.zshenv $HOME/
+
 RUN /tmp/backend-build/shell.sh
 USER $USERNAME
 
