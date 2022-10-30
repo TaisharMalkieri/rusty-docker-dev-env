@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-RUST_VERSION=${rust_version:-"stable"}
-RUSTUP_INIT_VERSION=${rust_analyzer_version:-"1.24.3"}
-RUST_ANALYZER_VERSION=${rust_analyzer_version:-"2022-08-22"}
+RUST_VERSION=${1:-"stable"}
+RUSTUP_INIT_VERSION=${2:-"1.24.3"}
+RUST_ANALYZER_VERSION=${3:-"2022-08-22"}
 
 PATH=/usr/local/cargo/bin:$PATH
 
@@ -15,7 +15,7 @@ aarch64) rustArch='aarch64-unknown-linux-gnu'; rustupSha256='32a1532f7cef072a667
 *) echo >&2 "unsupported architecture"; exit 1 ; \
 esac
 
-echo "Installing rust-$RUST_VERSION, rustup-$RUSTUP_INIT_VERSION, rust-analyzer $RUST_ANALYZER_VERSION for "$arch""
+echo "Installing rust-$RUST_VERSION, rustup-$RUSTUP_INIT_VERSION, rust-analyzer $RUST_ANALYZER_VERSION for $arch"
 
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
     --no-modify-path                        \
