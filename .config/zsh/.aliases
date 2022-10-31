@@ -1,0 +1,2 @@
+alias lu = "getent passwd"
+alias dc = "docker-compose"
