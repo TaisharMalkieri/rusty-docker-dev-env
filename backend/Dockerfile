@@ -1,8 +1,12 @@
 FROM debian:bullseye as Dev
+
 ARG RUST_STABILITY_VERSION
 ARG USERNAME
 ARG UID
 ARG GID
+ARG PASSWORD
+ARG GROUP_NAME="user"
+
 ARG GIT_USER
 ARG GIT_EMAIL
 
@@ -12,21 +16,25 @@ ARG RUST_INIT_VERSION="1.24.3"
 ARG RUST_ANALYZER_VERSION="2022-10-24"
 
 
-ENV GIT_USER=${GIT_USER}
-ENV GIT_EMAIL=${GIT_EMAIL}
-ENV USERNAME=${USERNAME}
-ENV UID=${UID}
-ENV GID=${GID}
+ENV GIT_USER=$GIT_USER
+ENV GIT_EMAIL=$GIT_EMAIL
 
-ENV RUSTUP_HOME=${RUSTUP_HOME}
-ENV CARGO_HOME=${CARGO_HOME}
+ENV RUSTUP_HOME=$RUSTUP_HOME
+ENV CARGO_HOME=$CARGO_HOME
 
 
 # Copy shell build commands into build environment
 COPY ./build/dev/*.sh /tmp/backend-build/
 
 # Create a build linux user
-RUN /tmp/backend-build/user.sh $USERNAME $UID $GID
+ARG INIT_USERNAME="init"
+ARG INIT_UID=$INIT_USERNAME
+ARG INIT_GID=$INIT_USERNAME
+ARG INIT_PASSWORD=$INIT_USERNAME
+ARG INIT_GROUP_NAME=$INIT_USERNAME
+RUN /tmp/backend-build/user.sh $INIT_USERNAME $INIT_UID  $INIT_GID $INIT_PASSWORD $INIT_GROUP_NAME
+# Create a superuser with password protection
+RUN /tmp/backend-build/user.sh $USERNAME $UID $GID $PASSWORD $GROUP_NAME
 # Install basic Linux utilities: Git, Curl, Wget, Unzip, Tree etc
 RUN tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 
@@ -42,7 +50,7 @@ ENV STARSHIP_CONFIG="$HOME/dev/rusty-docker-dev-env/.config/starship/starship.to
 ENV STARSHIP_CACHE=~"$HOME/dev/rusty-docker-dev-env/.config/starship/error-cache/"
 
 RUN /tmp/backend-build/shell.sh
-USER $USERNAME
+USER $INIT_USERNAME
 
 # RUN /tmp/backend-build/cargo.sh
 ENTRYPOINT [ "/usr/bin/zsh" ]
