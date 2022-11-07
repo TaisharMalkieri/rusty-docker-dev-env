@@ -50,7 +50,7 @@ ENV STARSHIP_CONFIG="$HOME/dev/rusty-docker-dev-env/.config/starship/starship.to
 ENV STARSHIP_CACHE=~"$HOME/dev/rusty-docker-dev-env/.config/starship/error-cache/"
 
 RUN /tmp/backend-build/shell.sh
-USER $INIT_USERNAME
+#USER $INIT_USERNAME
 
 # RUN /tmp/backend-build/cargo.sh
 ENTRYPOINT [ "/usr/bin/zsh" ]
