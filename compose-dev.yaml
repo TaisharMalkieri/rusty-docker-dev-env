@@ -14,7 +14,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-      target: Dev
+      target: development
       args:
         - RUST_STABILITY_VERSION="stable"
         - GIT_USER=tormod
@@ -22,6 +22,7 @@ services:
         - USERNAME=dev
         - UID=1000
         - GID=1000
+    tty: true
     environment:
       - CARGO_NET_GIT_FETCH_WITH_CLI=true
     networks:
