@@ -1,4 +1,4 @@
-FROM debian:bullseye as Dev
+FROM debian:bullseye as development
 
 ARG RUST_STABILITY_VERSION
 ARG USERNAME
