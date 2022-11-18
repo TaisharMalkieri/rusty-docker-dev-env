@@ -39,12 +39,12 @@ RUN /tmp/backend-build/user.sh $USERNAME $UID $GID $PASSWORD $GROUP_NAME
 RUN tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 
 # Set cargo path to root instead of default $HOME
-ENV PATH=/usr/local/cargo/bin:$PATH
+ENV PATH=/.cargo/bin:$PATH
 # Install rustup and basic rust configurations
 RUN /tmp/backend-build/rust.sh RUST_VERSION RUSTUP_INIT_VERSION RUST_ANALYZER_VERSION RUSTUP_HOME CARGO_HOME
 
 # Copies the zshenv file containing the project DOTDIR location, redirecting configuration from $HOME to .config/ZSH.
-COPY ./build/dev/shell/.zshenv $HOME/
+COPY ./build/dev/shell/.zshenv $HOME
 # Depends on user.sh and utilities.sh
 ENV STARSHIP_CONFIG="$HOME/dev/rusty-docker-dev-env/.config/starship/starship.toml"
 ENV STARSHIP_CACHE=~"$HOME/dev/rusty-docker-dev-env/.config/starship/error-cache/"

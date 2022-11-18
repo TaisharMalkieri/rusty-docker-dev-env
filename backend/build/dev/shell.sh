@@ -23,7 +23,7 @@ apt-get update -y && \
 mkdir -p /usr/local/share/fonts/
 
 apt-get install fontconfig                  &&\
-wget  --directory-prefix="/tmp/" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip &&\
+wget  --directory-prefix="/tmp/" --https-only https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Meslo.zip &&\
 unzip -o -qq /tmp/Meslo.zip -d /usr/local/share/fonts/Meslo   &&\
 rm /usr/local/share/fonts/Meslo/*Windows*              &&\
 fc-cache -fv                                &&\
@@ -31,7 +31,7 @@ rm -rf /tmp/*                               &&\
 echo "Installed primary font Meslo!"
 
 
-wget  --directory-prefix="/tmp/" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip &&\
+wget  --directory-prefix="/tmp/" --https-only https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraMono.zip &&\
 unzip -o -qq /tmp/FiraMono.zip -d /usr/local/share/fonts/FiraMono &&\
 rm /usr/local/share/fonts/FiraMono/*Windows*            &&\
 fc-cache -fv                              &&\
@@ -39,12 +39,16 @@ rm -rf /tmp/*                             &&\
 echo "Installed backup font Fira!"
 
 
-wget  --directory-prefix="/tmp/" https://github.com/vorillaz/devicons/archive/master.zip &&\
+wget  --directory-prefix="/tmp/" --https-only https://github.com/vorillaz/devicons/archive/master.zip &&\
 unzip -o -qq /tmp/master.zip -d /usr/local/share/fonts/devicons &&\
 rm /usr/local/share/fonts/devicons/*Windows*           &&\
 fc-cache -fv                              &&\
 rm -rf /tmp/*                             &&\
 echo "Installed devicons!"
+
+# OH MY ZSH
+wget --https-only --output-document="/tmp/ohmyzsh.sh" https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+sh /tmp/ohmyzsh.sh --unattended --keep-zshrc
 
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
 

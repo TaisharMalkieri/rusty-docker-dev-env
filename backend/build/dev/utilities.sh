@@ -3,11 +3,13 @@
 # Install curl, wget, git
 
 apt-get update                  \
-&& apt-get install -y git       \
-&& apt-get install -y curl      \
-&& apt-get install -y wget      \
-&& apt-get install -y unzip     \
-&& apt-get install -y tree      \
+&& apt-get install -y --no-install-recommends man openssh-client less \
+&& apt-get install -y --no-install-recommends git       \
+&& apt-get install -y --no-install-recommends ssh       \
+&& apt-get install -y --no-install-recommends curl      \
+&& apt-get install -y --no-install-recommends wget      \
+&& apt-get install -y --no-install-recommends unzip     \
+&& apt-get install -y --no-install-recommends tree      \
 && apt-get update               \
 && apt upgrade -y               \
 && apt-get clean
