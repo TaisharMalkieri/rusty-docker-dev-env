@@ -32,6 +32,7 @@ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
 
 mkdir CARGO_HOME
 export CARGO_HOME
+export /usr/local/cargo/bin:$PATH
 apt-get update && \
 apt-get -y install --no-install-recommends gcc libc6-dev musl-tools && \
 apt-get clean && \

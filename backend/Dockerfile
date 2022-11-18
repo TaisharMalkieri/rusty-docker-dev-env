@@ -15,13 +15,11 @@ ARG CARGO_HOME="/usr/local/cargo"
 ARG RUST_INIT_VERSION="1.24.3"
 ARG RUST_ANALYZER_VERSION="2022-10-24"
 
-
-ENV GIT_USER=$GIT_USER
-ENV GIT_EMAIL=$GIT_EMAIL
-
-ENV RUSTUP_HOME=$RUSTUP_HOME
-ENV CARGO_HOME=$CARGO_HOME
-
+ENV RUSTUP_HOME=/usr/local/rustup \
+    CARGO_HOME=/usr/local/cargo \
+    PATH=/usr/local/cargo/bin:$PATH \
+    GIT_USER=$GIT_USER \
+    GIT_EMAIL=$GIT_EMAIL
 
 # Copy shell build commands into build environment
 COPY ./build/dev/*.sh /tmp/backend-build/
@@ -39,7 +37,7 @@ RUN /tmp/backend-build/user.sh $USERNAME $UID $GID $PASSWORD $GROUP_NAME
 RUN tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 
 # Set cargo path to root instead of default $HOME
-ENV PATH=/.cargo/bin:$PATH
+
 # Install rustup and basic rust configurations
 RUN /tmp/backend-build/rust.sh RUST_VERSION RUSTUP_INIT_VERSION RUST_ANALYZER_VERSION RUSTUP_HOME CARGO_HOME
 
