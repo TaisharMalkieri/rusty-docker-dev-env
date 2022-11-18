@@ -20,6 +20,8 @@ aarch64) rustArch='aarch64-unknown-linux-gnu'; rustupSha256='32a1532f7cef072a667
 esac
 
 echo "Installing rust-$RUST_VERSION, rustup-$RUSTUP_INIT_VERSION, rust-analyzer $RUST_ANALYZER_VERSION for $arch"
+
+mkdir RUSTUP_HOME
 export RUSTUP_HOME
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
     --no-modify-path                        \
@@ -28,6 +30,7 @@ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs | bash -s -- -y \
     --default-host "$rustArch"             \
     --component add clippy rustfmt rust-src
 
+mkdir CARGO_HOME
 export CARGO_HOME
 apt-get update && \
 apt-get -y install --no-install-recommends gcc libc6-dev musl-tools && \
