@@ -41,7 +41,7 @@ RUN tmp/backend-build/utilities.sh $GIT_USER $GIT_EMAIL
 # Set cargo path to root instead of default $HOME
 ENV PATH=/usr/local/cargo/bin:$PATH
 # Install rustup and basic rust configurations
-RUN /tmp/backend-build/rust.sh RUST_VERSION RUSTUP_INIT_VERSION
+RUN /tmp/backend-build/rust.sh RUST_VERSION RUSTUP_INIT_VERSION RUST_ANALYZER_VERSION RUSTUP_HOME CARGO_HOME
 
 # Copies the zshenv file containing the project DOTDIR location, redirecting configuration from $HOME to .config/ZSH.
 COPY ./build/dev/shell/.zshenv $HOME/
